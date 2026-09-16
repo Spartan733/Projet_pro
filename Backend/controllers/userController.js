@@ -1,4 +1,4 @@
-const jwt = require ('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 const validator = require('validator')
 
@@ -6,17 +6,17 @@ const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES_IN = '364d'
 
 const generateToken = (id) => {
-    return jwt.sign({ id }, JWT_SECRET {
+    return jwt.sign({ id }, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN
     })
 }
 
 const register = async (req, res) => {
-    try{
-        const {name, email, password } = req.body
+    try {
+        const { name, email, password } = req.body
 
-        if(!name || !email || !password){
-            return res.status(200).json({message: 'Please, provide a name, an email and a password'})
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: 'Please, provide a name, an email and a password' })
         }
 
         const isPasswordOk = validator.isStrongPassword(password, {
@@ -27,19 +27,19 @@ const register = async (req, res) => {
             minSymbols: 1
         })
 
-        if(!isPasswordOk) {
-            return res.status(400).json({message: 'Password must have 1 lower, 1 upper, 1 number and 1 symbol and must be at least 6 charcters long'})
+        if (!isPasswordOk) {
+            return res.status(400).json({ message: 'Password must have 1 lower, 1 upper, 1 number and 1 symbol and must be at least 6 characters long' })
         }
 
         const isEmailOk = validator.isEmail(email)
 
-        if(!isEmail){
-            return res.status(400).json({message: 'You must provide a valide email'})
+        if (!isEmailOk) {
+            return res.status(400).json({ message: 'You must provide a valid email' })
         }
 
-        const existingUser =  await User.findOne({email})
-        if(existingUser){
-            return res.status(400).json({message: 'Email already use'})
+        const existingUser = await User.findOne({ where: { email } })
+        if (existingUser) {
+            return res.status(400).json({ message: 'Email already used' })
         }
 
         const user = await User.create({
@@ -51,16 +51,18 @@ const register = async (req, res) => {
         const token = generateToken(user.id)
 
         res.status(201).json({
-            message: 'User registered successfuly',
+            message: 'User registered successfully',
             token,
             user: {
-                id: user._id,
+                id: user.id,
                 name: user.name,
                 email: user.email
             }
         })
 
     } catch (err) {
-        res.status(500).json({message: 'Server error during registration', error: err.message})
+        res.status(500).json({ message: 'Server error during registration', error: err.message })
     }
 }
+
+module.exports = { register, generateToken }

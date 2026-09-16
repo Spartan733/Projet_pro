@@ -1,6 +1,8 @@
-const { sequelize } = require('sequelize')
+const { DataTypes } = require('sequelize')
+const sequelize = require ('../config/db')
 
-const teamSchema = new sequelize.Schema(
+const Team = sequelize.define(
+    "Team",
     {
         name: {
             type: String,
