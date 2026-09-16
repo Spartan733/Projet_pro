@@ -17,6 +17,7 @@ const connectDB = async () => {
         const client = await pool.connect()
         console.log('Database connection established succesfully')
         client.release()
+        
     } catch (err) {
         console.error('Unable to connect to the database:', err.message)
         process.exit(1)

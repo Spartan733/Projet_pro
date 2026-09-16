@@ -1,44 +1,23 @@
-const { sequelize } =  require ('sequelize')
-const bcrypt = require ('bcryptjs')
+const { pool } = require('../config/db')
 
-const userSchema = new sequelize.Schema(
-    {
-        name: {
-            type: String,
-            required: [true, 'Name is required'],
-            trim: true,
-        },
-        email: {
-            type: String,
-            required: [true, 'Email is required'],
-            unique: true,
-            lowercase: true,
-            trim: true
-        },
-        password: {
-            type: String,
-            required: [true, 'Password is required'],
-            minlenght: 6,
-            select: false,
-        },
-        role: {
-            type: String,
-            enum: ('admin', 'user', 'owner'),
-            default: 'user'
-        }
-    },
-    {
-        timestamps: true,
-    },
+const findUserByEmail = async (email) => {
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email])
+    return results.rows[0] || nill
+}
 
-    userSchema.pre('save', async function(){
-        if(!this.isModified('password')) return;
-        const salt = await bcrypt.genSalt(10)
-        this.password = await bcrypt.hash(this.password, salt)
-    }),
+const findUserById = async (id) => {
+    const result = await pool.query('SELECT * FROM users WHERE id = $1', [id])
+    return result.rows[0] || null
+}
 
-    userSchema.methods.comparePassword = async function (enteredPassword){
-        return await bcrypt.compare(enteredPassword, this.password)
-    }
-)
-module.exports = sequelize.model('User', userSchema)
+const createUser = async ({ name, email, password }) => {
+    const result = await pool.query(`
+        INSERT INTO "users" (username, email, password)
+        VALUES ($1, $2, $3)
+        RETURNING id, name, email, created_at, uptdate_at`,
+        [name, email, password]
+    )
+    return result.rows[0]
+}
+
+module.exports = findUserByEmail, findUserById, createUser

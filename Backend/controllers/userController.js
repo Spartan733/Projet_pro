@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const User = require('../models/userModel')
+const {finUserByEmail, createUser} = require('../models/userModel')
 const validator = require('validator')
 
 const JWT_SECRET = process.env.JWT_SECRET
@@ -37,16 +37,12 @@ const register = async (req, res) => {
             return res.status(400).json({ message: 'You must provide a valid email' })
         }
 
-        const existingUser = await User.findOne({ where: { email } })
+        const existingUser = await findUserByEmail(email)
         if (existingUser) {
             return res.status(400).json({ message: 'Email already used' })
         }
 
-        const user = await User.create({
-            name,
-            email,
-            password
-        })
+        const user = await createUser({ name, email, password })
 
         const token = generateToken(user.id)
 
