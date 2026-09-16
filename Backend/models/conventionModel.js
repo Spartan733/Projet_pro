@@ -28,63 +28,29 @@ const updateConvention = async (id, fields) => {
 
     for (const key of allowedFields) {
         if (fields[key] !== undefined) {
-            setClauses.push(``)
+            setClauses.push(`${key} = $${i}`)
+            values.push(typeof fields[key] === 'string' ? fields[key].trim() : fields[key])
+            i++
         }
     }
+
+    if (setClauses.length === 0) {
+        return getConventionById(id)
+    }
+
+    setClauses.push('update_at = NOW()')
+    values.push(id)
+
+    const result = await pool.query(
+        `UPDATE conventions SET ${setClauses.join(', ')} WHERE id = $${i} RETURNING *`,
+        values
+    )
+    return result.rows[0] || null
 }
 
-const Convention = sequelize.define(
-    'Convention',
-    {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notNull: { msg: 'Convention name is required' },
-                notEmpty: { msg: 'Convention name is required' }
-            }
-        },
-        city: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notNull: { msg: 'City name is required' },
-                notEmpty: { msg: 'City name is required' }
-            }
-        },
-        location: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notNull: { msg: 'Convention location is required' },
-                notEmpty: { msg: 'Convention location is required' }
-            }
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            validate: {
-                notNull: { msg: 'Convention date is required' }
-            }
-        }
-    },
-    {
-        timestamps: true,
-        hooks: {
-            // équivalent du "trim: true" de Mongoose, qui n'existe pas en Sequelize
-            beforeValidate: (convention) => {
-                ['name', 'city', 'location'].forEach((field) => {
-                    if (typeof convention[field] === 'string') {
-                        convention[field] = convention[field].trim()
-                    }
-                })
-            }
-        }
-    }
-)
+const deletConvention = async (id) => {
+    const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
+    return result.rowcount > 0
+}
 
-module.exports = Convention
+module.exports = { createConvention, getConventions, getConventionById, updateConvention, deleteConvention }

@@ -1,5 +1,7 @@
 const { pool } = require('../config/db')
 
+const createTeam = async ({})
+
 const Team = sequelize.define(
     "Team",
     {
