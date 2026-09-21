@@ -25,4 +25,4 @@ const deleteConvention = async (id) => {
     return result.rowcount > 0
 }
 
-module.exports = { createConvention, getConventions, getConventionById, updateConvention, deleteConvention }
+module.exports = { createConvention, getConventions, getConventionById, deleteConvention }
