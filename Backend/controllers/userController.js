@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const {finUserByEmail, createUser} = require('../models/userModel')
+const { findUserByEmail, createUser } = require('../models/userModel')
 const validator = require('validator')
 
 const JWT_SECRET = process.env.JWT_SECRET
@@ -51,7 +51,7 @@ const register = async (req, res) => {
             token,
             user: {
                 id: user.id,
-                name: user.name,
+                name: user.username,
                 email: user.email
             }
         })
@@ -61,4 +61,42 @@ const register = async (req, res) => {
     }
 }
 
-module.exports = { register, generateToken }
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body
+
+        if (!email || !password) {
+            return res.status(400).json({message: 'Invalid username or password'})
+        }
+        
+        // Trouve l'user et sélectionne le MDP
+        const user = await User.findOne({ email }).select('+password')
+        if(!user){
+            return res.status(401).json({ message: 'Invalid credentials'})
+        }
+
+        //Vérifie si le mdp correspond
+        const isMatch = await user.comparePassword(password)
+        if(!isMatch){
+            return res.status(401).json({ message: 'Invalid credentials'})
+        }
+
+        const token =  generateToken(user._id)
+
+        res.status(200).json({
+            message: 'Login succesfully',
+            token,
+            user: {
+                id: user.id,
+                name: user.username,
+                email: user.email,
+                role: user.role
+            }
+        })
+
+    } catch (err) {
+        res.status(500).json({ message : 'Error during connection', error: err.message})
+    }
+}
+
+module.exports = { register, generateToken, login }

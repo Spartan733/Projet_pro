@@ -20,4 +20,4 @@ const createUser = async ({ name, email, password }) => {
     return result.rows[0]
 }
 
-module.exports = findUserByEmail, findUserById, createUser
+module.exports = { findUserByEmail, findUserById, createUser }

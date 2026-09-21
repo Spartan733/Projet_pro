@@ -3,7 +3,7 @@ const pool = require('../config/db')
 const createConvention = async ({name, city, location, description, date}) => {
     const result = await pool.query(
         `INSERT INTO conventions (name, city, location, description, date)
-        VALUES ($1, $2, $3, *4, $5)
+        VALUES ($1, $2, $3, $4, $5)
         RETURNING *`,
         [name.trim(), city.trim(), location.trim(), description || null, date]
     )
@@ -48,7 +48,7 @@ const updateConvention = async (id, fields) => {
     return result.rows[0] || null
 }
 
-const deletConvention = async (id) => {
+const deleteConvention = async (id) => {
     const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
     return result.rowcount > 0
 }

@@ -1,6 +1,11 @@
 const { pool } = require('../config/db')
 
-const createTeam = async ({})
+const createTeam = async ({name, description, owner_id}) => {
+    const result = await pool.query(
+        'INSERT INTO teams (name, owner_id) VALUES ($1, $2) RETURNING *',
+        [name.trim]
+    )
+}
 
 const Team = sequelize.define(
     "Team",
