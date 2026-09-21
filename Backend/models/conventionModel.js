@@ -20,34 +20,6 @@ const getConventionById = async (id) => {
     return result.rows[0] || null
 }
 
-const updateConvention = async (id, fields) => {
-    const allowedFields = ['name', 'city', 'location', 'description', 'date']
-    const setClauses = []
-    const values = []
-    let i = 1
-
-    for (const key of allowedFields) {
-        if (fields[key] !== undefined) {
-            setClauses.push(`${key} = $${i}`)
-            values.push(typeof fields[key] === 'string' ? fields[key].trim() : fields[key])
-            i++
-        }
-    }
-
-    if (setClauses.length === 0) {
-        return getConventionById(id)
-    }
-
-    setClauses.push('update_at = NOW()')
-    values.push(id)
-
-    const result = await pool.query(
-        `UPDATE conventions SET ${setClauses.join(', ')} WHERE id = $${i} RETURNING *`,
-        values
-    )
-    return result.rows[0] || null
-}
-
 const deleteConvention = async (id) => {
     const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
     return result.rowcount > 0
