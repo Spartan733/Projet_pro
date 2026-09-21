@@ -69,13 +69,13 @@ const login = async (req, res) => {
             return res.status(400).json({message: 'Invalid username or password'})
         }
         
-        // Trouve l'user et sélectionne le MDP
+        // Get user from token payload
         const user = await User.findOne({ email }).select('+password')
         if(!user){
             return res.status(401).json({ message: 'Invalid credentials'})
         }
 
-        //Vérifie si le mdp correspond
+        //Verifie if password is match
         const isMatch = await user.comparePassword(password)
         if(!isMatch){
             return res.status(401).json({ message: 'Invalid credentials'})

@@ -25,8 +25,7 @@ const Team = sequelize.define(
                 type: sequelize.Schema.Types.ObjectId,
                 ref: 'user'
             } 
-        ]
-            
+        ]      
     },
     {
         timestamps: true
