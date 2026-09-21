@@ -7,16 +7,16 @@ const port = 3000
 
 require('dotenv').config
 require('./config/db')
-const { sequelize, connectDB } =  require('./config/db')
+// const { sequelize, connectDB } =  require('./config/db')
 
 const limiter = rateLimit({
-    windowsMs: 15 * 60 * 1000,
+    windowMs: 15 * 60 * 1000,
     limit: 100,
     message: {status: 429, error: 'Too many requests; please try again later.'}
 })
 
 const startServer = async () => {
-    await connectDB()
+    // await connectDB()
 
     await sequelize.sync({alter: false})
     console.log('Tables synchronized')
