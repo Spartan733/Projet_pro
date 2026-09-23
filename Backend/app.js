@@ -1,13 +1,22 @@
 const express = require('express')
 const app = express()
+const port = 3000
 const cors =  require('cors')
 const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
-const port = 3000
+const path = require('path')
 
 require('dotenv').config
 require('./config/db')
-// const { sequelize, connectDB } =  require('./config/db')
+
+//Import des routes
+const userRoutes = require('./routes/userRoutes')
+const teamRoutes = require('./routes/teamRoutes')
+const conventionRoutes = require('./routes/conventionRoutes')
+
+const corsOption = {
+    origin: ['http://']
+}
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -22,8 +31,6 @@ const startServer = async () => {
     console.log('Tables synchronized')
 }
 
-//Import des routes
-
 
 app.use(
     helmet({
@@ -33,9 +40,6 @@ app.use(
 )
 
 app.use(express.json())
-const corsOption = {
-    origin: 'https://localhost:3000'
-}
 app.use(cors(corsOption))
 app.use(limiter)
 
