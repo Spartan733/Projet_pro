@@ -44,9 +44,9 @@ app.use(cors(corsOption))
 app.use(limiter)
 
 // Routes
-app.use('/users', userRoutes)
-app.use('/teams', teamRoutes)
-app.use('/conventions', conventionRoutes)
+app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/team', teamRoutes)
+app.use('/api/v1/convention', conventionRoutes)
 
 // Routes d'acceuil
 app.get('/', (req, res) => {
