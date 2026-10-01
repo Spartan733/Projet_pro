@@ -1,11 +1,11 @@
-const pool = require('../config/db')
+const { pool } = require('../config/db')
 
-const createConvention = async ({name, city, location, description, date}) => {
+const createConvention = async ({name, city, location, description, date_start, date_end}) => {
     const result = await pool.query(
-        `INSERT INTO conventions (name, city, location, description, date)
-        VALUES ($1, $2, $3, $4, $5)
+        `INSERT INTO conventions (name, city, location, description, date_start, date_end)
+        VALUES ($1, $2, $3, $4, $5, $6)
         RETURNING *`,
-        [name.trim(), city.trim(), location.trim(), description || null, date]
+        [name.trim(), city.trim(), location.trim(), description || null, date_start, date_end]
     )
     return result.rows[0]
 }

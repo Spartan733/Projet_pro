@@ -1,20 +1,23 @@
 const Convention = require('../models/conventionModel')
 const { createConvention, getConventions, getConventionById, deleteConvention } = require('../models/conventionModel')
 
-const create = async (req, res) => {
+const addConvention = async (req, res) => {
     try {
-        const { name, city, location, description, date } = req.body
+        const { name, city, location, description, date_start, date_end } = req.body
 
-        if(!name || !city || !location || !date){
+        if(!name || !city || !location || !date_start || !date_end){
             return res.status(400).json({ message: 'Name, City, Location and date are required'})
         }
 
+
+        // convertir format date : dd/mm/aaaa en mm/dd/aaaa
         const convention = await createConvention({
             name,
             city,
             location,
             description,
-            date
+            date_start,
+            date_end
         })
 
         return res.status(201).json({ 
@@ -92,4 +95,4 @@ const remove = async (req, res) => {
     }
 }
 
-module.exports = { create, getAll, getById, update, remove}
+module.exports = { addConvention, getAll, getById, update, remove}

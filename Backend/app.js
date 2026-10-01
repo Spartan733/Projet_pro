@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
+const app = express()
+const port = 3000
 
 require('dotenv').config()
 
@@ -11,10 +13,7 @@ require('./config/db')
 //Import des routes
 const userRoutes = require('./routes/userRoutes')
 // const teamRoutes = require('./routes/teamRoutes')
-// const conventionRoutes = require('./routes/conventionRoutes')
-
-const app = express()
-const port = 3000
+const conventionRoutes = require('./routes/conventionRoutes')
 
 // Configuration Cors
 const corsOption = {
@@ -44,9 +43,8 @@ app.use(cors(corsOption))
 app.use(limiter)
 
 // Routes
-app.use('/api/v1/user', userRoutes)
-// app.use('/api/v1/team', teamRoutes)
-// app.use('/api/v1/convention', conventionRoutes)
+app.use('/api/v1/users', userRoutes)
+app.use('/api/v1/conventions', conventionRoutes)
 
 // Routes d'acceuil
 app.get('/', (req, res) => {
