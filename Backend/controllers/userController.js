@@ -6,9 +6,11 @@ const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES_IN = '364d'
 
 const generateToken = (id) => {
+    console.log(JWT_SECRET)
     return jwt.sign({ id }, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN
     })
+    
 }
 
 const register = async (req, res) => {

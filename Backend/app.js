@@ -10,15 +10,15 @@ require('./config/db')
 
 //Import des routes
 const userRoutes = require('./routes/userRoutes')
-const teamRoutes = require('./routes/teamRoutes')
-const conventionRoutes = require('./routes/conventionRoutes')
+// const teamRoutes = require('./routes/teamRoutes')
+// const conventionRoutes = require('./routes/conventionRoutes')
 
 const app = express()
 const port = 3000
 
 // Configuration Cors
 const corsOption = {
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:5473', "*"]
 }
 
 const limiter = rateLimit({
@@ -45,8 +45,8 @@ app.use(limiter)
 
 // Routes
 app.use('/api/v1/user', userRoutes)
-app.use('/api/v1/team', teamRoutes)
-app.use('/api/v1/convention', conventionRoutes)
+// app.use('/api/v1/team', teamRoutes)
+// app.use('/api/v1/convention', conventionRoutes)
 
 // Routes d'acceuil
 app.get('/', (req, res) => {
