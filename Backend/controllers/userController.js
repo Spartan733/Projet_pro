@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken')
 const { findUserByEmail, createUser } = require('../models/userModel')
+const bcrypt = require('bcryptjs')
 const validator = require('validator')
 
 const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES_IN = '364d'
 
 const generateToken = (id) => {
-    console.log(JWT_SECRET)
     return jwt.sign({ id }, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN
     })
@@ -72,15 +72,15 @@ const login = async (req, res) => {
         }
         
         // Get user from token payload
-        const user = await User.findOne({ email }).select('+password')
+        const user = await findUserByEmail( email )
         if(!user){
             return res.status(401).json({ message: 'Invalid credentials'})
         }
 
         //Verifie if password is match
-        const isMatch = await user.comparePassword(password)
+        const isMatch = await bcrypt.compare(password, user.password)
         if(!isMatch){
-            return res.status(401).json({ message: 'Invalid credentials'})
+            return res.status(401).json({ message: 'Login and/or password incorect'})
         }
 
         const token =  generateToken(user._id)

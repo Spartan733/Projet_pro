@@ -1,11 +1,12 @@
 const { pool } = require('../config/db')
+const bcrypt = require('bcryptjs')
 
 const findUserByEmail = async (email) => {
     const result = await pool.query(
         'SELECT * FROM users WHERE email = $1',
         [email]
     )
-
+    console.log(email)
     return result.rows[0] || null
 }
 
@@ -19,13 +20,16 @@ const findUserById = async (id) => {
 }
 
 const createUser = async ({ name, email, password }) => {
+    const salt = await bcrypt.genSalt(10)
+    const hashPassword = await bcrypt.hash(password, salt)
+
     const result = await pool.query(
         `
         INSERT INTO users (username, email, password)
         VALUES ($1, $2, $3)
         RETURNING id, username, email
         `,
-        [name, email, password]
+        [name, email, hashPassword]
     )
 
     return result.rows[0]
