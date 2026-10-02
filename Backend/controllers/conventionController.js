@@ -30,7 +30,7 @@ const addConvention = async (req, res) => {
     }
 }
 
-const getAll = async (req, res) => {
+const getAllConventions = async (req, res) => {
     try {
         const conventions = await getConventions()
 
@@ -40,7 +40,7 @@ const getAll = async (req, res) => {
     }
 }
 
-const getById = async (req, res) => {
+const getConventionsById = async (req, res) => {
     try{
         const { id } = req.params
 
@@ -57,7 +57,7 @@ const getById = async (req, res) => {
     }
 }
 
-const update = async (req, res) => {
+const updateConventions = async (req, res) => {
     try {
         const { id } = req.params
 
@@ -76,7 +76,7 @@ const update = async (req, res) => {
     }
 }
 
-const remove = async (req, res) => {
+const removeConventions = async (req, res) => {
     try{
         const { id } = req.params
 
@@ -95,4 +95,4 @@ const remove = async (req, res) => {
     }
 }
 
-module.exports = { addConvention, getAll, getById, update, remove}
+module.exports = { addConvention, getAllConventions, getConventionsById, updateConventions, removeConventions}

@@ -11,7 +11,7 @@ const createConvention = async ({name, city, location, description, date_start, 
 }
 
 const getConventions = async () => {
-    const result = await pool.query('SELECT * FROM conventions ORDER BY date ASC')
+    const result = await pool.query('SELECT * FROM conventions ORDER BY date_start ASC')
     return result.rows
 }
 
