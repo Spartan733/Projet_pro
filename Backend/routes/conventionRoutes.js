@@ -5,6 +5,6 @@ const { addConvention, getConventions, getConventionById, updateConventions } = 
 router.post('/create', addConvention)
 router.get('/', getConventions)
 router.get('/:id', getConventionById)
-router.post('/:id/update', updateConventions)
+router.put('/:id/update', updateConventions)
 
 module.exports = router

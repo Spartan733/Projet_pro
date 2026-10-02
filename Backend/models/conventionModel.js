@@ -20,12 +20,12 @@ const getOneConvention = async (id) => {
     return result.rows[0] || null
 }
 
-const updateOneConvention = async (id) => {
+const updateOneConvention = async (id, name, city, location, description, date_start, date_end) => {
     const result = await pool.query(
-        `UPDATE conventions WHERE id = $1 SET (name, city, location, description, date_start, date_end) 
-        VALUES ($1, $2, $3, $4, $5, $6)
+        `UPDATE conventions SET name = $1, city = $2, location = $3, description = $4, date_start = $5, date_end = $6
+        WHERE id = $7
         RETURNING *`,
-        [name.trim(), city.trim(), location.trim(), description || null, date_start, date_end]
+        [name.trim(), city.trim(), location.trim(), description || null, date_start, date_end, id]
     )
     return result.rows[0]
 }
