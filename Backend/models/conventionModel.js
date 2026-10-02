@@ -31,7 +31,7 @@ const updateOneConvention = async (id, name, city, location, description, date_s
 }
 
 const deleteOneConvention = async (id) => {
-    const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
+    const result = await pool.query('DELETE FROM conventions WHERE id = $1', [id])
     return result.rowcount > 0
 }
 

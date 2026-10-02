@@ -58,7 +58,7 @@ const getConventionById = async (req, res) => {
     }
 }
 
-const updateConventions = async (req, res) => {
+const updateConvention = async (req, res) => {
     try {
         const { id } = req.params
         const { name, city, location, description, date_start, date_end } = req.body
@@ -77,17 +77,16 @@ const updateConventions = async (req, res) => {
     }
 }
 
-const removeConventions = async (req, res) => {
+const deleteConvention = async (req, res) => {
     try{
         const { id } = req.params
-
-        const convention = await getConventionById(id)
-
+        
+        const convention = await getOneConvention(id)
         if(!convention){
             return res.status(404).json({ message: 'Convention not found'})
         }
 
-        await deleteConvention(id)
+        await deleteOneConvention(id)
 
         return res.status(200).json({ message: 'Convention deleted successfully'})
 
@@ -96,4 +95,4 @@ const removeConventions = async (req, res) => {
     }
 }
 
-module.exports = { addConvention, getConventions, getConventionById, updateConventions, removeConventions}
+module.exports = { addConvention, getConventions, getConventionById, updateConvention, deleteConvention}
