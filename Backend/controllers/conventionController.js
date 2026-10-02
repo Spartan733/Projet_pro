@@ -1,6 +1,7 @@
 const Convention = require('../models/conventionModel')
 const { createConvention, getAllConventions, getOneConvention, deleteOneConvention } = require('../models/conventionModel')
 
+
 const addConvention = async (req, res) => {
     try {
         const { name, city, location, description, date_start, date_end } = req.body
@@ -67,7 +68,7 @@ const updateConventions = async (req, res) => {
             return res.status(404).json({ message: 'Convention not found'})
         }
 
-        const updatedConvention = await updateConvention(id, req.body)
+        const updatedConvention = await updateOneConvention(id, req.body)
 
         return res.status(200).json({ message: 'Convention updated successfully',convention: updatedConvention})
 

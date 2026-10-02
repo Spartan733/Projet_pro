@@ -20,9 +20,19 @@ const getOneConvention = async (id) => {
     return result.rows[0] || null
 }
 
+const updateOneConvention = async (id) => {
+    const result = await pool.query(
+        `UPDATE conventions WHERE id = $1 SET (name, city, location, description, date_start, date_end) 
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING *`,
+        [name.trim(), city.trim(), location.trim(), description || null, date_start, date_end]
+    )
+    return result.rows[0]
+}
+
 const deleteOneConvention = async (id) => {
     const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
     return result.rowcount > 0
 }
 
-module.exports = { createConvention, getAllConventions, getOneConvention, deleteOneConvention }
+module.exports = { createConvention, getAllConventions, getOneConvention, updateOneConvention, deleteOneConvention }
