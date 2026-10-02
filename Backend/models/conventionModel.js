@@ -10,19 +10,19 @@ const createConvention = async ({name, city, location, description, date_start, 
     return result.rows[0]
 }
 
-const getConventions = async () => {
+const getAllConventions = async () => {
     const result = await pool.query('SELECT * FROM conventions ORDER BY date_start ASC')
     return result.rows
 }
 
-const getConventionById = async (id) => {
+const getOneConvention = async (id) => {
     const result = await pool.query('SELECT * FROM conventions WHERE id = $1', [id])
     return result.rows[0] || null
 }
 
-const deleteConvention = async (id) => {
+const deleteOneConvention = async (id) => {
     const result = await pool.query('DELETE * FROM conventions WHERE id = $1 RETURNING id', [id])
     return result.rowcount > 0
 }
 
-module.exports = { createConvention, getConventions, getConventionById, deleteConvention }
+module.exports = { createConvention, getAllConventions, getOneConvention, deleteOneConvention }

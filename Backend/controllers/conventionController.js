@@ -1,5 +1,5 @@
 const Convention = require('../models/conventionModel')
-const { createConvention, getConventions, getConventionById, deleteConvention } = require('../models/conventionModel')
+const { createConvention, getAllConventions, getOneConvention, deleteOneConvention } = require('../models/conventionModel')
 
 const addConvention = async (req, res) => {
     try {
@@ -30,9 +30,9 @@ const addConvention = async (req, res) => {
     }
 }
 
-const getAllConventions = async (req, res) => {
+const getConventions = async (req, res) => {
     try {
-        const conventions = await getConventions()
+        const conventions = await getAllConventions()
 
         return res.status(200).json(conventions)
     } catch (err) {
@@ -40,11 +40,11 @@ const getAllConventions = async (req, res) => {
     }
 }
 
-const getConventionsById = async (req, res) => {
+const getConventionById = async (req, res) => {
     try{
         const { id } = req.params
 
-        const convention = await getConventionById(id)
+        const convention = await getOneConvention(id)
 
         if(!convention){
             return res.status(404).json({message: 'Convention not found'})
@@ -95,4 +95,4 @@ const removeConventions = async (req, res) => {
     }
 }
 
-module.exports = { addConvention, getAllConventions, getConventionsById, updateConventions, removeConventions}
+module.exports = { addConvention, getConventions, getConventionById, updateConventions, removeConventions}
