@@ -1,5 +1,6 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import '../styles/Contact.scss';
 
 function Contact() {
     return (
@@ -7,9 +8,9 @@ function Contact() {
             <NavBar />
 
             <main>
-                <section className='contact_section'>
+                <section className='section1'>
                     <h1>Contactez-moi</h1>
-                    <div className="contact_info">
+                    <div className="infos">
                         <h2>Mes informations</h2>
                         <p>Vous pouvez me contacter directement via les informations ci-dessous ou bien utiliser le formulaire</p>
 
@@ -27,14 +28,19 @@ function Contact() {
                     <form>
                         <label htmlFor='name'>Nom</label>
                         <input type='text' id="name" placeholder="Entrer votre nom"/>
+
                         <label htmlFor='email'>Email</label>
                         <input type='text' id="email" placeholder="Entrer votre email"/>
-                        <label htmlFor='email'>Message</label>
+                        
+                        <label htmlFor='message'>Message</label>
                         <textarea id="message" rows="6" placeholder="Votre message..."/>
+                        
+                        <div className="rgpd">
+                            <input type="checkbox" id="rgpd" name="rgpd" required />
+                            <label htmlFor="rgpd"> J'accepte que mes informations soient utilisées pour répondre à ma demande, conformément a la politique de cnfidentialité</label>
+                        </div>
 
-                        <button type="submit">
-                            Envoyer
-                        </button>
+                        <button type="submit">Envoyer</button>
                     </form>
                 </section>
             </main>

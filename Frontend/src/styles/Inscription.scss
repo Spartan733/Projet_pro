@@ -1,0 +1,125 @@
+@import './styles.scss';
+
+main {
+  min-height: 75vh;
+  padding: 60px 20px;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: $background-color-inscription;
+}
+
+.inscription {
+  width: 100%;
+  max-width: 460px;
+  padding: 40px;
+  box-sizing: border-box;
+
+  background: $color-form-inscription;
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 12px 35px rgba(31, 41, 55, 0.08);
+
+  h1 {
+    margin: 0 0 30px;
+    text-align: center;
+    font-size: 30px;
+    color: $title-inscription;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  label {
+    color: $text-color;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    background-color: $color-form-inscription;
+
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $accent-color;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+  }
+
+
+  button {
+    margin-top: 12px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 6px;
+    background-color: $color-btn-inscription;
+    color: $color-form-inscription;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: $accent-color;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+
+  p {
+    margin: 25px 0 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 14px;
+
+    a {
+      color: #0284c7;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  main {
+    padding: 30px 15px;
+  }
+
+  .inscription {
+    padding: 25px 20px;
+
+    h1 {
+      font-size: 26px;
+    }
+  }
+}

@@ -1,0 +1,135 @@
+@import './styles.scss';
+
+
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 32px 20px 18px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+
+  background-color: $footer-bg;
+  color: $footer-text;
+  font-family: Arial, sans-serif;
+
+  .about,
+  .support,
+  .legal {
+    min-width: 0;
+
+    h3 {
+      margin: 0 0 14px;
+      padding-bottom: 12px;
+
+      color: $footer-accent;
+      font-size: 1.05rem;
+      font-weight: 700;
+
+      border-bottom: 1px solid $footer-border;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: inline-block;
+      padding: 4px 0;
+
+      color: $footer-muted;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      text-decoration: none;
+
+      overflow-wrap: anywhere;
+
+      transition:
+        color $transition,
+        transform $transition;
+
+      &:hover {
+        color: $footer-accent;
+        transform: translateX(4px);
+      }
+
+      &:focus-visible {
+        color: $footer-accent;
+        outline: 2px solid $footer-accent;
+        outline-offset: 3px;
+      }
+    }
+  }
+
+  > div:last-child {
+    min-width: 0;
+    padding-top: 18px;
+    border-top: 1px solid $footer-border;
+    text-align: center;
+
+    p {
+      margin: 0;
+      color: $footer-muted;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .footer {
+    padding: 40px 32px 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 28px;
+
+    .about,
+    .support,
+    .legal {
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+
+    > div:last-child {
+      grid-column: 1 / -1;
+
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    padding: 48px max(5%, calc((100% - 1200px) / 2)) 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px;
+
+    .about,
+    .support,
+    .legal {
+      h3 {
+        margin-bottom: 20px;
+      }
+    }
+
+    > div:last-child {
+      grid-column: 1 / -1;
+      margin-top: 8px;
+      padding-top: 20px;
+    }
+  }
+}
