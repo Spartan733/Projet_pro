@@ -1,19 +1,15 @@
 @import './styles.scss';
 
-
-
 .card {
+    width: 100%;
     overflow: hidden;
-    background-color: $couleur-fond;
-    color: $couleur-texte;
+    background-color: $bg-color-card;
+    color: $text-color-card;
     border: 1px solid rgba(244, 121, 186, 0.4);
     border-radius: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(244, 121, 186, 0.15);
-    }
 
     .card_image {
         display: block;
@@ -23,32 +19,87 @@
     }
 
     .card_content {
-        padding: 20px;
+        padding: 16px;
 
         h2 {
             margin: 0 0 12px;
-            color: $couleur-principale;
-            font-size: 1.3rem;
+            color: $color-principaly;
+            font-size: 1.2rem;
+            line-height: 1.4;
         }
 
         p {
             margin: 0 0 20px;
-            color: $couleur-secondaire;
+            color: $color-secondary;
+            font-size: 0.95rem;
             line-height: 1.6;
         }
 
         button {
+            display: inline-block;
+            max-width: 100%;
             padding: 10px 16px;
-            color: #111827;
-            background-color: $couleur-principale;
+            // color: #111827;
+            background-color: $bg-color-btn-card;
             border: none;
             border-radius: 6px;
+            font-size: 0.95rem;
             font-weight: 700;
             cursor: pointer;
+            transition: opacity 0.3s ease;
 
             &:hover {
                 opacity: 0.85;
             }
+
+            &:focus-visible {
+                outline: 2px solid $bg-color-btn-card;
+                outline-offset: 3px;
+            }
         }
+    }
+}
+
+@media (min-width: 600px) {
+    .card {
+        .card_image {
+            height: 220px;
+        }
+
+        .card_content {
+            padding: 20px;
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 900px) {
+    .card {
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(244, 121, 186, 0.15);
+        }
+
+        .card_image {
+            height: 240px;
+        }
+
+        .card_content {
+            padding: 24px;
+        }
+    }
+}
+
+@media (hover: none) {
+    .card:hover {
+        transform: none;
+        box-shadow: none;
     }
 }

@@ -1,4 +1,5 @@
 import CardConv from "./CardConv";
+import "../styles/ListCard.scss"
 
 function ListCard() {
     const cartes = [
@@ -9,49 +10,55 @@ function ListCard() {
             date_end: "12-06-2027",
             city: "Paris",
             location: "Rue Générale de Gaulle",
-            description: "ozhiguhzriughrziuhgierzug",
+            description: "Une convention à Paris.",
             images: "",
-            website:""
+            website: "",
         },
         {
             id: 2,
-            name: "tarerfe",
+            name: "Convention de Toulouse",
             date_start: "13-08-2027",
             date_end: "23-08-2027",
             city: "Toulouse",
             location: "Avenue Charles Leclerc",
-            description: "keruhgzouerhgiezuargliqerzhgiuqersiguherighqeriuhgeziurfhgiuethfgiuesrligehrdoihgsdf",
+            description: "Une convention à Toulouse.",
             images: "",
-            website:""
+            website: "",
         },
         {
             id: 3,
-            name: "jzjrgiqzurhgqeorger",
+            name: "Convention de Strasbourg",
             date_start: "15-10-2027",
             date_end: "18-10-2027",
             city: "Strasbourg",
             location: "Place Pierre Lefebre",
-            description: "erghehethrthrhehze",
+            description: "Une convention à Strasbourg.",
             images: "",
-            website:""
+            website: "",
         },
     ];
 
-    return(
-        <main>
-            <h1>Liste des conventions</h1>
+    return (
+        <section>
+            <h2>Liste des conventions</h2>
 
             <div className="list_card">
                 {cartes.map((carte) => (
-                    <Card
+                    <CardConv
                         key={carte.id}
-                        titre={carte.titre}
+                        name={carte.name}
+                        date_start={carte.date_start}
+                        date_end={carte.date_end}
+                        city={carte.city}
+                        location={carte.location}
                         description={carte.description}
+                        images={carte.images}
+                        website={carte.website}
                     />
                 ))}
             </div>
-        </main>
-    )
+        </section>
+    );
 }
 
 export default ListCard;

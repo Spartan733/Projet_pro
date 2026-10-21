@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-// import ListCard from "../components/ListCard";
+import ListCard from "../components/ListCard";
 
 
 function Home() {
@@ -12,8 +12,8 @@ function Home() {
                 <section className='find'>
                     <h1>Trouve ta team, vis tes conventions ensemble</h1>
                     <p>Rencontre des passionnées de manga, anime et cosplays, découvre les conventions prés de chez toi et crée ta propre team</p>
+                    <ListCard />
                 </section>
-                {/* <ListCard /> */}
             </main>
             <Footer />
         </>

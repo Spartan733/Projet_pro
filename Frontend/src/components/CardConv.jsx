@@ -1,20 +1,31 @@
-import '../styles/Card.scss';
+import "../styles/Card.scss";
 
-const CardConv = ({name, date_start, date_end, city, location, description, images, website}) => {
-    return(
+function CardConv({ name, date_start, date_end, city, location, description, images, website, }) {
+    return (
         <div className="card">
-            <span>Conventions Japonaise</span>
-            <span>10-06-2027</span>
-            <span>13-06-2027</span>
-            <span>Paris</span>
-            <span>Rue du Générale de Gaulle</span>
-            <span>{description}</span>
-            <img src={images} alt="" />
-            <span>{website}</span>
+            <span>{name}</span>
+            <br />
+            <span>Du {date_start} au {date_end}</span>
+            <br />
+            <span>{city}</span>
+            <br />
+            <span>{location}</span>
+            <br />
+            <p>{description}</p>
 
-            <button className="card-btn">En savoir plus</button>
+            {images && <img src={images} alt={name} />}
+
+            {website && (
+                <a href={website} target="_blank" rel="noreferrer">
+                    Site officiel
+                </a>
+            )}
+
+            <button className="card-btn">
+                En savoir plus
+            </button>
         </div>
-    )
+    );
 }
 
-export default CardConv
+export default CardConv;
