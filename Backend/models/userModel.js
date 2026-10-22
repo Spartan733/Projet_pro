@@ -6,7 +6,6 @@ const findUserByEmail = async (email) => {
         'SELECT * FROM users WHERE email = $1',
         [email]
     )
-    console.log(email)
     return result.rows[0] || null
 }
 

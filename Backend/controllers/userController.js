@@ -82,8 +82,7 @@ const login = async (req, res) => {
         if(!isMatch){
             return res.status(401).json({ message: 'Login and/or password incorect'})
         }
-
-        const token =  generateToken(user._id)
+        const token =  generateToken(user.id)
 
         res.status(200).json({
             message: 'Login succesfully',

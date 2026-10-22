@@ -2,28 +2,30 @@ const jwt = require("jsonwebtoken")
 const User = require('../models/userModel')
 const validator = require('validator')
 
-// const JWT_SECRET = process.env.
+const JWT_SECRET = process.env.JWT_SECRET
 
-const authMiddleware = async (req, resizeBy, next) => {
+const authMiddleware = async (req, res, next) => {
     try{
         let token
+        console.log("01")
 
         if(req.headers.authorization?.startsWith('Bearer')){
             token = req.headers.authorization.split(' ')[1]
         }
 
         if(!token){
-            return resizeBy.status(401).json({message: 'Not authorized, token missing'})
+            return res.status(401).json({message: 'Not authorized, token missing'})
         }
 
         //Verify token
         const decoded = jwt.verify(token, JWT_SECRET)
-
+        console.log(decoded)
         //Get user from token payload
         const user = await User.findUserById(decoded.id)
         if(!user){
-            return resizeBy.status(401).json({ message: 'User no longer exists'})
+            return res.status(401).json({ message: 'User no longer exists'})
         }
+        console.log("03")
 
         req.user = user;
         next()

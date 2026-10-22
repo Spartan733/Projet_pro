@@ -1,6 +1,6 @@
 const { pool } = require('../config/db')
 
-// Créer une équipe
+
 const createTeam = async ({
     name,
     description,
@@ -35,7 +35,7 @@ const createTeam = async ({
     return result.rows[0]
 }
 
-// Afficher toute les équipes
+
 const findAllTeams = async () => {
     const result = await pool.query(`
         SELECT
@@ -54,7 +54,7 @@ const findAllTeams = async () => {
     return result.rows
 }
 
-// Trouver une équipe avec l'id de l'équipe
+
 const findTeamById = async (id) => {
     const result = await pool.query(`
         SELECT
@@ -73,7 +73,7 @@ const findTeamById = async (id) => {
     return result.rows[0] || null
 }
 
-// Trouver une équipe avec l'id de l'user
+
 const findTeamsByUserId = async (userId) => {
     const result = await pool.query(`
         SELECT
@@ -93,7 +93,7 @@ const findTeamsByUserId = async (userId) => {
     return result.rows
 }
 
-// Mise à jour d'une équipe
+
 const updateTeam = async (
     id,
     {
@@ -129,7 +129,7 @@ const updateTeam = async (
     return result.rows[0] || null
 }
 
-// Suppression d'une équipe
+
 const deleteTeam = async (id) => {
     const result = await pool.query(
         'DELETE FROM teams WHERE id = $1 RETURNING id',
@@ -139,7 +139,7 @@ const deleteTeam = async (id) => {
     return result.rows[0] || null
 }
 
-// Ajouter un membre à l'équipe
+
 const addTeamMember = async (teamId, userId, status = 'Pending') => {
     const result = await pool.query(`
         INSERT INTO team_members (
@@ -158,7 +158,6 @@ const addTeamMember = async (teamId, userId, status = 'Pending') => {
     return result.rows[0]
 }
 
-// Afficher les membres d'une équipe avec l'id de l'équipe
 const findMembersTeamByUserId = async (teamId, userId) => {
     const result = await pool.query(`
         SELECT

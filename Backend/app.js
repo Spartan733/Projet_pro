@@ -12,7 +12,7 @@ require('./config/db')
 
 //Import des routes
 const userRoutes = require('./routes/userRoutes')
-// const teamRoutes = require('./routes/teamRoutes')
+const teamRoutes = require('./routes/teamRoutes')
 const conventionRoutes = require('./routes/conventionRoutes')
 
 // Configuration Cors
@@ -45,6 +45,7 @@ app.use(limiter)
 // Routes
 app.use('/api/v1/users', userRoutes)
 app.use('/api/v1/conventions', conventionRoutes)
+app.use('/api/v1/teams', teamRoutes)
 
 // Routes d'acceuil
 app.get('/', (req, res) => {
