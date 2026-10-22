@@ -94,38 +94,12 @@ const findTeamsByUserId = async (userId) => {
 }
 
 
-const updateTeam = async (
-    id,
-    {
-        name,
-        description,
-        conventionId,
-        maxMembers
-    }
-) => {
+const updateTeam = async (id, name, description, conventionId, maxMembers) => {
     const result = await pool.query(`
-        UPDATE teams
-        SET
-            name = $1,
-            description = $2,
-            convention_id = $3,
-            max_members = $4
-        WHERE id = $5
-        RETURNING
-            id,
-            name,
-            description,
-            owner_id,
-            convention_id,
-            max_members
-    `, [
-        name,
-        description,
-        conventionId,
-        maxMembers,
-        id
-    ])
-
+        UPDATE teams SET name = $1, description = $2, convention_id = $3, max_members = $4 WHERE id = $5
+        RETURNING * `, 
+        [name, description, conventionId, maxMembers, id ]
+    )
     return result.rows[0] || null
 }
 
