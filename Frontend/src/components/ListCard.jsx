@@ -11,7 +11,7 @@ function ListCard() {
             city: "Paris",
             location: "Rue Générale de Gaulle",
             description: "Une convention à Paris.",
-            images: "",
+            images: "../img/convention-cosplays.webp",
             website: "",
         },
         {
@@ -22,7 +22,7 @@ function ListCard() {
             city: "Toulouse",
             location: "Avenue Charles Leclerc",
             description: "Une convention à Toulouse.",
-            images: "",
+            images: "../img/Japan-Expo.webp",
             website: "",
         },
         {
@@ -33,7 +33,7 @@ function ListCard() {
             city: "Strasbourg",
             location: "Place Pierre Lefebre",
             description: "Une convention à Strasbourg.",
-            images: "",
+            images: "../img/manga-tout-un-art-paris.webp",
             website: "",
         },
     ];

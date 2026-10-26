@@ -3,6 +3,13 @@ import "../styles/Card.scss";
 function CardConv({ name, date_start, date_end, city, location, description, images, website, }) {
     return (
         <div className="card">
+            {images && <img src={images} alt={name} />}
+
+            {website && (
+                <a href={website} target="_blank" rel="noreferrer">
+                    Site officiel
+                </a>
+            )}
             <span>{name}</span>
             <br />
             <span>Du {date_start} au {date_end}</span>
@@ -13,13 +20,6 @@ function CardConv({ name, date_start, date_end, city, location, description, ima
             <br />
             <p>{description}</p>
 
-            {images && <img src={images} alt={name} />}
-
-            {website && (
-                <a href={website} target="_blank" rel="noreferrer">
-                    Site officiel
-                </a>
-            )}
 
             <button className="card-btn">
                 En savoir plus

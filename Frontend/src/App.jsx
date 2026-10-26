@@ -10,6 +10,7 @@ import MdpOublier from './pages/Forget';
 import Admin from './pages/Admin';
 import CardConv from './components/CardConv';
 import ListCard from './components/ListCard';
+import Connected from './pages/Connected';
 
 function App() {
   return(
@@ -23,6 +24,7 @@ function App() {
         <Route path='/Pourquoi' element={<Pourquoi />} />
         <Route path='/MdpOublier' element={<MdpOublier />} />
         <Route path='/Admin' element={<Admin />} />
+        <Route path='/Connected' element={<Connected />} />
         
       </Routes>
     </Router>

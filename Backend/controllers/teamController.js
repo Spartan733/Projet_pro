@@ -81,13 +81,14 @@ const updateTeam = async (req, res) => {
 const deleteTeam = async (req, res) => {
     try{
         const { id } = req.params
-        
+
         const teams = await team.findTeamById(id)
         if(!teams){
             return res.status(404).json({ message: 'Teams not found'})
         }
-
+        
         await deleteTeam(id)
+        console.log(id)
 
         return res.status(200).json({ message: 'Team deleted successfully'})
 

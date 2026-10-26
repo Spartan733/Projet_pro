@@ -13,7 +13,7 @@ export default function NavBar() {
         <nav className='nav'>
             <div className='Menu'>
                 <span>
-                    <img src="Frontend\img\TsunaCrew Logo.jpg" alt="Logo TsunaCrew" style={{ verticalAlign: 'middle' }} />
+                    <img src="../img/Logo pour accueil.jpg" alt="Logo TsunaCrew" style={{ verticalAlign: 'middle' }} />
                 </span>
 
                 <button className='mobile_menu' onClick={toggleMenu}>
