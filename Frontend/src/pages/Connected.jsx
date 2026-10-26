@@ -1,6 +1,7 @@
-import NavBar from "../components/NavBar";
+import NavBarUser from "../components/NavBarUser";
 import Footer from "../components/Footer";
-import { Link, Navigate, replace } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Connected() {
@@ -8,22 +9,22 @@ function Connected() {
     const pseudo = sessionStorage.getItem("pseudo");
 
     if(!pseudo) {
-        return <Navigate to="/Frontend/src/pages/Connexion.jsx" replace />
+        return <Navigate to="/Connexion" replace />
     }
 
     function deconnexion() {
         sessionStorage.removeItem("pseudo");
-        navigate("/Frontend/src/pages/Connexion.jsx");
+        navigate("/Connexion");
     }
 
     return(
         <>
-            <NavBar />
+            <NavBarUser />
 
             <section className="connected_main">
                 <h1>Bienvenue sur Tsunacrew {pseudo}</h1>
 
-                <p>Tu es maintenant connect" a ton espace personnel.</p>
+                <p>Tu es maintenant connecté a ton espace personnel.</p>
 
             </section>
 

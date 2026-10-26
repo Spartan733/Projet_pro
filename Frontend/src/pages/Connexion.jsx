@@ -1,14 +1,21 @@
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Connected from "./Connected";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../styles/Connexion.scss';
 
 function Connexion() {
+  const navigate = useNavigate
+
     const handleSubmit = (event) => {
     event.preventDefault();
 
+    const email = event.target.elements.email.value;
+    const pseudo = email.split("@")[0];
 
+    sessionStorage.setItem("pseudo", pseudo);
+
+    navigate("/Connected");
   };
 
   return (
@@ -33,7 +40,7 @@ function Connexion() {
             <Link to="/MdpOublier">Changer de mot de passe </Link>
           
             <p>Vous n'avez pas encore de compte ?</p>
-            <Link to="./Inscription.jsx">S'inscrire</Link>
+            <Link to="/Inscription">S'inscrire</Link>
           </section>
         </main>
 
