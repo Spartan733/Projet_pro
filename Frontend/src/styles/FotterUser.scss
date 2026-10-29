@@ -1,0 +1,48 @@
+.footer_user {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  // Taille du footer
+  width: 85%;
+  max-width: 380px;
+  box-sizing: border-box;
+
+  // Position des icônes
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  // Apparence
+  background-color: #15141b;
+  border: 1px solid #33303b;
+  border-radius: 50px;
+  padding: 12px 10px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #e9b9cd;
+    text-decoration: none;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+
+    &:hover {
+      color: #ff9fc5;
+    }
+  }
+}
+
+// Tablette et ordinateur
+@media (min-width: 768px) {
+  .footer_user {
+    width: 350px;
+  }
+}

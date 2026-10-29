@@ -1,7 +1,7 @@
 import CardConv from "./CardConv";
 import "../styles/ListCard.scss"
 
-function ListCard() {
+function ListCard({limite = 3}) {
     const cartes = [
         {
             id: 1,
@@ -43,7 +43,7 @@ function ListCard() {
             <h2>Liste des conventions</h2>
 
             <div className="list_card">
-                {cartes.map((carte) => (
+                {cartes.slice(0, limite).map((carte) => (
                     <CardConv
                         key={carte.id}
                         name={carte.name}

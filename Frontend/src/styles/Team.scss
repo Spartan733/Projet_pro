@@ -1,0 +1,143 @@
+.teams_main {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 30px 15px 120px;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  background-color: #15151d;
+  color: #35baff;
+  text-align: center;
+
+  h1 {
+    font-size: 25px;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin: 20px 0 0;
+  }
+
+  button {
+    background-color: #35baff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+
+    padding: 12px 20px;
+    font-size: 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #F479BA;
+    }
+  }
+
+  .btn_creer {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .teams_form {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 20px;
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 15px;
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+
+      border: 1px solid #674c70;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+  }
+
+  .teams_liste {
+    width: 100%;
+    max-width: 1000px;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  // Carte d'une équipe
+  .teams_card {
+    min-width: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    padding: 25px 15px;
+
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 20px;
+
+    h3 {
+      font-size: 20px;
+      color: #e9b9cd;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    p {
+      color: #35baff;
+    }
+
+    button {
+      width: 100%;
+      max-width: 180px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .teams_main {
+    padding: 40px 30px 130px;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    .teams_liste {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .teams_main {
+    .teams_liste {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+}

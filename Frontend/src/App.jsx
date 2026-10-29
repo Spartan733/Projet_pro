@@ -11,6 +11,7 @@ import Admin from './pages/Admin';
 import CardConv from './components/CardConv';
 import ListCard from './components/ListCard';
 import Connected from './pages/Connected';
+import Teams from './pages/Team';
 
 function App() {
   return(
@@ -25,6 +26,8 @@ function App() {
         <Route path='/MdpOublier' element={<MdpOublier />} />
         <Route path='/Admin' element={<Admin />} />
         <Route path='/Connected' element={<Connected />} />
+        <Route path='/Team' element={<Teams />} />
+    
         
       </Routes>
     </Router>

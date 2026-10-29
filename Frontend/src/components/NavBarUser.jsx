@@ -23,7 +23,7 @@ export default function NavBarUser () {
                 <div className='Nav_user'>
                     <Link to="/">Accueil</Link>
                     <Link to="/">Profil</Link>
-                    <Link to="/">Teams</Link>
+                    <Link to="/Team">Teams</Link>
                     <Link to="/Convention">Conventions</Link>
                 </div>
             </div>
