@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import NavBarUser from "../components/NavBarUser";
 import FooterUser from "../components/FooterUser";
 import "../styles/Team.scss";
@@ -69,8 +70,8 @@ export default function Teams() {
             <article className="teams_card" key={equipe.id}>
               <h3>{equipe.nom}</h3>
               <p>{equipe.membres} membre(s)</p>
-
-              <button type="button">Voir l'équipe</button>
+              
+              <Link to={`/VoirTeam/${equipe.id}`} className="btn_look_team">Voir l'équipe</Link>
             </article>
           ))}
         </div>

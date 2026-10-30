@@ -1,0 +1,181 @@
+.profil_main {
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px 15px 120px;
+
+  background-color: #15151d;
+  color: #35baff;
+
+  h1 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .profil_sous_titre {
+    margin: 0 0 30px;
+    font-size: 15px;
+    color: #b9b9c8;
+    text-align: center;
+  }
+
+  .profil_card {
+    width: 100%;
+    max-width: 430px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    padding: 25px 20px;
+
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 25px;
+  }
+
+  .profil_img {
+    width: 110px;
+    height: 110px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #15151d;
+    border: 3px solid #e9b9cd;
+    border-radius: 50%;
+    color: #e9b9cd;
+  }
+
+  h2 {
+    margin: 5px 0 0;
+    font-size: 27px;
+    color: #e9b9cd;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  .profil_badge {
+    padding: 7px 15px;
+
+    background-color: #35283e;
+    border-radius: 20px;
+
+    color: #e9b9cd;
+    font-size: 13px;
+  }
+
+  .profil_detail {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+
+    .pseudo,
+    .mail,
+    .team,
+    .convention {
+      width: 100%;
+      box-sizing: border-box;
+
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      padding: 15px;
+
+      background-color: #15151d;
+      border-radius: 15px;
+
+      // Icônes
+      svg {
+        width: 24px;
+        height: 24px;
+        color: #e9b9cd;
+        flex-shrink: 0;
+      }
+
+      // Contenu texte
+      div {
+        min-width: 0;
+        text-align: left;
+      }
+
+      strong {
+        color: #e9b9cd;
+        font-size: 14px;
+      }
+
+      p {
+        margin: 5px 0 0;
+        color: #35baff;
+        font-size: 15px;
+        overflow-wrap: anywhere;
+      }
+    }
+  }
+
+  // Bouton modifier
+  .profil_modifier {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 15px;
+    padding: 14px;
+
+    background-color: #35baff;
+    color: white;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      background-color: #159bdc;
+    }
+
+    &:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+  }
+
+  // Message sous le bouton
+  .profil_a_venir {
+    margin: 0;
+    font-size: 12px;
+    color: #b9b9c8;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .profil_main {
+    padding: 50px 30px 130px;
+
+    h1 {
+      font-size: 34px;
+    }
+
+    .profil_card {
+      padding: 35px;
+    }
+  }
+}

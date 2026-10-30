@@ -13,15 +13,15 @@ export default function NavBarAdmin() {
         <nav className='nav-admin'>
             <div className='menu-admin'>
                 <span>
-                    <img src="Frontend\img\TsunaCrew Logo.jpg" alt="Logo TsunaCrew" style={{verticalAlign: 'middle'}} />
+                    <img src="../img/Logo.jpg" alt="Logo TsunaCrew" style={{verticalAlign: 'middle'}} />
                 </span>
 
                 <button className='mobile-menu-admin' onClick={toggleMenu}>{isOpen ? "X" : "☰"}</button>
 
                 <div className='Nav-Admin'>
-                    <Link to="/Home">Accueil</Link>
-                    <Link to ='/'>Conventions</Link>
-                    <Link to ='/'>Signalement</Link>
+                    <Link to="/">Accueil</Link>
+                    <Link to ='/Conventions'>Conventions</Link>
+                    <Link to ='/AdminReport'>Signalement</Link>
                     <Link to ='/'>Groupes</Link>
                     <Link to ='/'>Système</Link>
                 </div>
@@ -29,9 +29,9 @@ export default function NavBarAdmin() {
 
             {isOpen && (
                 <div className='menu_admin_open'>
-                    <Link to="/Home">Accueil</Link>
-                    <Link to="/">Conventions</Link>
-                    <Link to="/">Signalement</Link>
+                    <Link to="/">Accueil</Link>
+                    <Link to="/Conventions">Conventions</Link>
+                    <Link to="/AdminReport">Signalement</Link>
                     <Link to="/">Groupes</Link>
                     <Link to="/">Système</Link>
                 </div>

@@ -7,11 +7,11 @@ export default function FooterUser() {
         <footer className='footer_user'>
             <Link to="/Connected"> <House /></Link>
 
-            <Link to="/Convention"> <Store /></Link>
+            <Link to="/Conventions"> <Store /></Link>
 
             <Link to="/Team"> <Users /></Link>
 
-            <Link to="/"> <UserRound /></Link>
+            <Link to="/Profil"> <UserRound /></Link>
         </footer>
     )
 }

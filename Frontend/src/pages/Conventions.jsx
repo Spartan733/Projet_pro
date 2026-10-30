@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
-function ConventionsDetails() {
+function Conventions() {
     const { id } = useParams();
 
     const convention = conventions.find(
@@ -60,3 +60,5 @@ function ConventionsDetails() {
         </>
     )
 }   
+
+export default Conventions;

@@ -13,7 +13,7 @@ export default function NavBar() {
         <nav className='nav'>
             <div className='Menu'>
                 <span>
-                    <img src="../img/Logo pour accueil.jpg" alt="Logo TsunaCrew" style={{ verticalAlign: 'middle' }} />
+                    <img src="../img/Logo.jpg" alt="Logo TsunaCrew" style={{ verticalAlign: 'middle' }} />
                 </span>
 
                 <button className='mobile_menu' onClick={toggleMenu}>
@@ -21,7 +21,7 @@ export default function NavBar() {
                 </button>
 
                 <div className='Nav'>
-                    <Link to="/Home">Acceuil</Link>
+                    <Link to="/">Accueil</Link>
                     <Link to="/Connexion">Connexion</Link>
                     <Link to="/Admin">Admin</Link>
                     <Link to="/APropos">A propos</Link>
@@ -31,7 +31,7 @@ export default function NavBar() {
 
             {isOpen && (
                 <div className='mobile_menu_open'>
-                    <Link to="/Home">Acceuil</Link>
+                    <Link to="/">Accueil</Link>
                     <Link to="/Admin">Admin</Link>
                     <Link to="/Connexion">Connexion</Link>
                     <Link to="/APropos">A propos</Link>

@@ -13,7 +13,7 @@ export default function NavBarUser () {
         <nav className='nav_user'>
             <div className='Menu_user'>
                 <span>
-                    <img src="../img/TsunaCrew Logo.jpg" alt="Logo TsunaCrew" />
+                    <img src="../img/Logo.jpg" alt="Logo TsunaCrew" />
                 </span>
 
                 <button className='mobile_menu_user' onClick={toggleMenu}>

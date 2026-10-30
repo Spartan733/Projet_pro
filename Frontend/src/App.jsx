@@ -12,12 +12,17 @@ import CardConv from './components/CardConv';
 import ListCard from './components/ListCard';
 import Connected from './pages/Connected';
 import Teams from './pages/Team';
+import Profil from './pages/Profil';
+import VoirEquipe from './pages/VoirTeam';
+import Conventions from './pages/Conventions';
+import AdminReport from './pages/AdminReport';
+
 
 function App() {
   return(
     <Router>
       <Routes>
-        <Route path='/Home' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/Contact' element={<Contact />} />
         <Route path='/Connexion' element={<Connexion />} />
         <Route path='/Inscription' element={<Inscription />} />
@@ -27,6 +32,10 @@ function App() {
         <Route path='/Admin' element={<Admin />} />
         <Route path='/Connected' element={<Connected />} />
         <Route path='/Team' element={<Teams />} />
+        <Route path='/Profil' element={<Profil />} />
+        <Route path='/VoirTeam' element={<Conventions />} />
+        <Route path='/Conventions' element={<Conventions />} />
+        <Route path='/AdminReport' element={<AdminReport />} />
     
         
       </Routes>
