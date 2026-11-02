@@ -16,6 +16,8 @@ export default function NavBarAdmin() {
                     <img src="../img/Logo.jpg" alt="Logo TsunaCrew" style={{verticalAlign: 'middle'}} />
                 </span>
 
+                <h2 className='Title_admin'>TsunaCrew Admin</h2>
+
                 <button className='mobile-menu-admin' onClick={toggleMenu}>{isOpen ? "X" : "☰"}</button>
 
                 <div className='Nav-Admin'>

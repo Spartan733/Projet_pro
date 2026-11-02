@@ -3,7 +3,7 @@ import NavBarAdmin from "../components/NavBarAdmin";
 import Footer from "../components/Footer";
 
 export default function AdminReport(){
-    const [report, setReport] = useState([
+    const [report, setReports] = useState([
         {
             id: 1,
             pseudo: "Jiro",
@@ -20,6 +20,24 @@ export default function AdminReport(){
         },
     ]);
 
+    const [filter, setFilter] = useState("Tous");
+
+    function statusChange(id){
+        const newListe = report.map((report) => 
+            report.id === id ? { ...report, statut: "Resolu" } : report 
+        );
+        
+        setReports(newListe);
+    }
+
+    function deleteRepor(id) {
+    const nouvelleListe = signalements.filter(
+      (signalement) => signalement.id !== id
+    );
+
+    setSignalements(nouvelleListe);
+  }
+
     return(
         <>
             <NavBarAdmin />
@@ -29,12 +47,20 @@ export default function AdminReport(){
 
                 <p>Apperçu des signalements de TsunaCrew</p>
 
-                <div>
+                <div className="report_details">
                     <article className="report_stats">
                         <h2>{report.length}</h2>
                         <span>Total</span>
+
+                        <button></button>
+                    </article>
+
+                    <article>
+                        <h2>Signalements </h2>
                     </article>
                 </div>
+
+        
 
             </section>
 

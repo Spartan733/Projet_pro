@@ -26,7 +26,6 @@ $transition: 0.3s ease;
     justify-content: space-between;
     gap: 16px;
 
-    // Logo
     > span {
       display: flex;
       align-items: center;
@@ -42,12 +41,14 @@ $transition: 0.3s ease;
       }
     }
 
+    .Title_admin{
+      color: #F479BA;
+    }
   
     .Nav-Admin {
       display: none;
     }
 
-    // Bouton hamburger
     .mobile-menu-admin {
       display: flex;
       align-items: center;

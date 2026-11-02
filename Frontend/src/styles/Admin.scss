@@ -1,51 +1,275 @@
-.admin_main {
+.admin_section {
   width: 100%;
+  max-width: 1100px;
   min-height: 100vh;
   box-sizing: border-box;
 
+  margin: 0 auto;
+  padding: 30px 15px 120px;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 30px;
-
-  padding: 30px 15px 60px;
-  margin: 0;
+  gap: 35px;
 
   background-color: #15151d;
-  color: #35baff;
+  color: #ffffff;
 
-  h1 {
-    width: 100%;
-    margin: 0;
-
-    font-size: 26px;
-    text-align: center;
-    color: #35baff;
+  h2 {
+    margin: 0 0 20px;
+    font-size: 22px;
+    color: #38bdf8;
   }
 
-  > * {
-    max-width: 100%;
+  > .admin_section {
+    width: 100%;
+    min-height: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    background: transparent;
+  }
+
+  .admin_bienvenue {
+    text-align: center;
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      color: #35baff;
+    }
+
+    p {
+      margin: 0;
+      font-size: 15px;
+      color: #b9b9c8;
+      line-height: 1.5;
+    }
+  }
+
+  .admin_statistiques {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .admin_stat_card {
+    min-width: 0;
+    padding: 20px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 18px;
+    text-align: center;
+
+    .admin_stat_icone {
+      color: #e9b9cd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 28px;
+      color: #35baff;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: #ffffff;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .admin_acces {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+
+    a {
+      min-width: 0;
+      box-sizing: border-box;
+
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      padding: 18px;
+
+      background-color: #202331;
+      border: 1px solid #674c70;
+      border-radius: 15px;
+
+      color: #35baff;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+
+      span {
+        flex: 1;
+        color: #ffffff;
+        font-size: 15px;
+        overflow-wrap: anywhere;
+      }
+
+      svg {
+        flex-shrink: 0;
+      }
+
+      &:hover {
+        background-color: #f479ba;
+        color: #ffffff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .admin_activities {
+    width: 100%;
+  }
+
+  .admin_activites {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin_activite_card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 20px;
+
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 15px;
+
+    .admin_activities_icone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      color: #e9b9cd;
+    }
+
+    .admin_activities_info {
+      min-width: 0;
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        color: #ffffff;
+        overflow-wrap: anywhere;
+      }
+
+      p {
+        margin: 0;
+        font-size: 13px;
+        color: #b9b9c8;
+      }
+    }
+  }
+
+  .admin_conv {
+    width: 100%;
+  }
+
+  .admin_conventions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .admin_convention_card {
+    min-width: 0;
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 25px 20px;
+
+    background-color: #202331;
+    border: 1px solid #674c70;
+    border-radius: 20px;
+
+    > svg {
+      color: #e9b9cd;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #35baff;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #b9b9c8;
+      overflow-wrap: anywhere;
+    }
+
+    strong {
+      color: #e9b9cd;
+      font-weight: 600;
+    }
   }
 }
 
 @media (min-width: 768px) {
-  .admin_main {
-    padding: 40px 30px 70px;
-    gap: 35px;
+  .admin_section {
+    padding: 40px 30px 120px;
+    gap: 45px;
 
-    h1 {
-      font-size: 32px;
+    .admin_bienvenue h1 {
+      font-size: 34px;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+
+    .admin_statistiques {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .admin_acces {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin_conventions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }
 
 @media (min-width: 1024px) {
-  .admin_main {
-    padding: 50px 40px 80px;
+  .admin_section {
+    padding: 50px 40px 120px;
 
-    h1 {
-      font-size: 36px;
+    .admin_bienvenue h1 {
+      font-size: 38px;
+    }
+
+    .admin_stat_card {
+      padding: 25px 15px;
+    }
+
+    .admin_convention_card {
+      padding: 30px;
     }
   }
 }
