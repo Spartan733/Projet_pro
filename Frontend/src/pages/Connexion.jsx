@@ -1,52 +1,90 @@
+
+import { useState } from "react";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
-import Connected from "./Connected";
 import { Link, useNavigate } from "react-router-dom";
-import '../styles/Connexion.scss';
+import { apiRequest } from "../services/api";
+import "../styles/Connexion.scss";
 
 function Connexion() {
-  const navigate = useNavigate
+  const navigate = useNavigate();
+  const [erreur, setErreur] = useState("");
+  const [chargement, setChargement] = useState(false);
 
-    const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setErreur("");
+    setChargement(true);
 
     const email = event.target.elements.email.value;
-    const pseudo = email.split("@")[0];
+    const password = event.target.elements.password.value;
 
-    sessionStorage.setItem("pseudo", pseudo);
+    try {
+      const data = await apiRequest("/users/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+      });
 
-    navigate("/Connected");
+      // Enregistrer la session
+      sessionStorage.setItem("token", data.token);
+      sessionStorage.setItem("user", JSON.stringify(data.user));
+      sessionStorage.setItem("pseudo", data.user.name);
+
+      // Redirection après connexion réussie
+      navigate("/Connected");
+
+    } catch (error) {
+      setErreur(error.message);
+    } finally {
+      setChargement(false);
+    }
   };
 
   return (
     <>
-        <NavBar />
+      <NavBar />
 
-        <main>
-          <section className="connexion">
-            <h1>Connectez vous</h1>
+      <main>
+        <section className="connexion">
+          <h1>Connectez vous</h1>
 
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Entrer votre email" required/>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Entrer votre email"
+              required
+            />
 
-              <label htmlFor="password">Mot de passe</label>
-              <input type="password" id="password" name="password" placeholder="Entrer votre mot de passe" required />
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Entrer votre mot de passe"
+              required
+            />
 
-              <button type="submit">Se connecter</button>
-            </form>
+            {erreur && <p role="alert">{erreur}</p>}
 
-            <p>Vous avez oublier votre mot de passe ?</p>
-            <Link to="/MdpOublier">Changer de mot de passe </Link>
-          
-            <p>Vous n'avez pas encore de compte ?</p>
-            <Link to="/Inscription">S'inscrire</Link>
-          </section>
-        </main>
+            <button type="submit" disabled={chargement}>
+              {chargement ? "Connexion..." : "Se connecter"}
+            </button>
+          </form>
 
-        <Footer />
+          <p>Vous avez oublié votre mot de passe ?</p>
+          <Link to="/MdpOublier">Changer de mot de passe</Link>
+
+          <p>Vous n'avez pas encore de compte ?</p>
+          <Link to="/Inscription">S'inscrire</Link>
+        </section>
+      </main>
+
+      <Footer />
     </>
-  )
+  );
 }
 
-export default Connexion
+export default Connexion;

@@ -16,6 +16,7 @@ import Profil from './pages/Profil';
 import VoirEquipe from './pages/VoirTeam';
 import Conventions from './pages/Conventions';
 import AdminReport from './pages/AdminReport';
+import Page404 from './pages/404';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Route path='/VoirTeam' element={<Conventions />} />
         <Route path='/Conventions' element={<Conventions />} />
         <Route path='/AdminReport' element={<AdminReport />} />
+        <Route path='*' element={<Page404 />} />
     
         
       </Routes>

@@ -18,7 +18,7 @@ export default function Footer() {
                 <ul>
                     <li> <a href="/Contact">Me contacter</a></li>
                     <li> <a href="#">Signaler un problème</a></li>
-                    <li> <a href="#">Page 404</a></li>
+                    <li> <a href="../pages/404.jsx">Page 404</a></li>
                 </ul>
             </div>
 

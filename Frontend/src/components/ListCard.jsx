@@ -1,64 +1,51 @@
 import CardConv from "./CardConv";
-import "../styles/ListCard.scss"
+import "../styles/ListCard.scss";
+import { useEffect, useState } from "react";
+import { apiRequest } from "../services/api";
 
-function ListCard({limite = 3}) {
-    const cartes = [
-        {
-            id: 1,
-            name: "Convention",
-            date_start: "10-06-2027",
-            date_end: "12-06-2027",
-            city: "Paris",
-            location: "Rue Générale de Gaulle",
-            description: "Une convention à Paris.",
-            images: "../img/convention-cosplays.webp",
-            website: "",
-        },
-        {
-            id: 2,
-            name: "Convention de Toulouse",
-            date_start: "13-08-2027",
-            date_end: "23-08-2027",
-            city: "Toulouse",
-            location: "Avenue Charles Leclerc",
-            description: "Une convention à Toulouse.",
-            images: "../img/Japan-Expo.webp",
-            website: "",
-        },
-        {
-            id: 3,
-            name: "Convention de Strasbourg",
-            date_start: "15-10-2027",
-            date_end: "18-10-2027",
-            city: "Strasbourg",
-            location: "Place Pierre Lefebre",
-            description: "Une convention à Strasbourg.",
-            images: "../img/manga-tout-un-art-paris.webp",
-            website: "",
-        },
-    ];
 
-    return (
-        <section>
-            <h2>Liste des conventions</h2>
+function ListCard({ limite = 3 }) {
+  const [cartes, setCartes] = useState([]);
+  const [erreur, setErreur] = useState("");
+  const [chargement, setChargement] = useState(true);
 
-            <div className="list_card">
-                {cartes.slice(0, limite).map((carte) => (
-                    <CardConv
-                        key={carte.id}
-                        name={carte.name}
-                        date_start={carte.date_start}
-                        date_end={carte.date_end}
-                        city={carte.city}
-                        location={carte.location}
-                        description={carte.description}
-                        images={carte.images}
-                        website={carte.website}
-                    />
-                ))}
-            </div>
-        </section>
-    );
+  useEffect(() => {
+    async function chargerConventions() {
+      try {
+        const data = await apiRequest("/conventions");
+        setCartes(data);
+      } catch (error) {
+        setErreur(error.message);
+      } finally {
+        setChargement(false);
+      }
+    }
+
+    chargerConventions();
+  }, []);
+
+  if (chargement) {
+    return <p>Chargement des conventions...</p>;
+  }
+
+  if (erreur) {
+    return <p role="alert">{erreur}</p>;
+  }
+
+  return (
+    <section>
+      <h2>Liste des conventions</h2>
+
+      <div className="list_card">
+        {cartes.slice(0, limite).map((carte) => (
+          <CardConv
+            key={carte.id}
+            {...carte}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default ListCard;
