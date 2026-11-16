@@ -22,7 +22,7 @@ export default function NavBarUser () {
 
                 <div className='Nav_user'>
                     <Link to="/">Accueil</Link>
-                    <Link to="/">Profil</Link>
+                    <Link to="/Profil">Profil</Link>
                     <Link to="/Team">Teams</Link>
                     <Link to="/Convention">Conventions</Link>
                 </div>
@@ -31,7 +31,7 @@ export default function NavBarUser () {
             {isOpen && (
                 <div className='menu_user_open'>
                     <Link to="/">Accueil</Link>
-                    <Link to="/">Profil</Link>
+                    <Link to="/Profil">Profil</Link>
                     <Link to="/">Teams</Link>
                     <Link to="/Convention">Conventions</Link>
                 </div>
