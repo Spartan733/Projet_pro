@@ -34,8 +34,9 @@ function App() {
         <Route path='/Connected' element={<Connected />} />
         <Route path='/Team' element={<Teams />} />
         <Route path='/Profil' element={<Profil />} />
-        <Route path='/VoirTeam' element={<Conventions />} />
+        <Route path='/VoirTeam' element={<VoirEquipe />} />
         <Route path='/Conventions' element={<Conventions />} />
+        {/* <Route path='/Conventions/:id' element={<ConventionsId />} /> */}
         <Route path='/AdminReport' element={<AdminReport />} />
         <Route path='*' element={<Page404 />} />
     

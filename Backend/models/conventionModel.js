@@ -32,7 +32,7 @@ const updateOneConvention = async (id, name, city, location, description, date_s
 
 const deleteOneConvention = async (id) => {
     const result = await pool.query('DELETE FROM conventions WHERE id = $1', [id])
-    return result.rowcount > 0
+    return result.rowCount > 0
 }
 
 module.exports = { createConvention, getAllConventions, getOneConvention, updateOneConvention, deleteOneConvention }

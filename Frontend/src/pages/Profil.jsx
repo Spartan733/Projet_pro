@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import {
-  UserRound,
-  Mail,
-  Users,
-  CalendarDays,
-  Pencil,
-  MapPin,
-  FileText,
-  Camera
-} from "lucide-react";
+import { UserRound, Mail, Users, CalendarDays, Pencil, MapPin, FileText, Camera } from "lucide-react";
 
 import NavBarUser from "../components/NavBarUser";
 import FooterUser from "../components/FooterUser";
@@ -91,7 +82,7 @@ export default function Profil() {
 
     setErreur("");
     console.log("NOUVELLE PHOTO :", file.name)
-    
+
     setAvatar(file);
   };
 

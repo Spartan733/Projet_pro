@@ -1,3 +1,15 @@
+require('dotenv').config()
+
+console.log(
+  "URL Supabase :",
+  process.env.SUPABASE_PROJECT_URL
+);
+
+console.log(
+  "Clé Supabase chargée :",
+  Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY)
+);
+
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -5,7 +17,6 @@ const rateLimit = require('express-rate-limit')
 const app = express()
 const port = 3000
 
-require('dotenv').config()
 
 // Connexion a la bdd
 require('./config/db')
@@ -17,7 +28,7 @@ const conventionRoutes = require('./routes/conventionRoutes')
 
 // Configuration Cors
 const corsOption = {
-    origin: ['http://localhost:5473', "*"]
+    origin: ['http://localhost:5173', "*"]
 }
 
 const limiter = rateLimit({

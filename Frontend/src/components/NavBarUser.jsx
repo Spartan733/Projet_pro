@@ -24,7 +24,7 @@ export default function NavBarUser () {
                     <Link to="/">Accueil</Link>
                     <Link to="/Profil">Profil</Link>
                     <Link to="/Team">Teams</Link>
-                    <Link to="/Convention">Conventions</Link>
+                    <Link to="/Conventions">Conventions</Link>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@ export default function NavBarUser () {
                     <Link to="/">Accueil</Link>
                     <Link to="/Profil">Profil</Link>
                     <Link to="/">Teams</Link>
-                    <Link to="/Convention">Conventions</Link>
+                    <Link to="/Conventions">Conventions</Link>
                 </div>
             )}
         </nav>
